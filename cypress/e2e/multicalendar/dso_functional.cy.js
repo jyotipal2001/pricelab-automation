@@ -15,7 +15,7 @@ describe('Feature: Multicalendar DSO - Functional Tests', () => {
     cy.get('tr[data-index]', { timeout: 20000 }).should('exist')
   })
 
-  // ─── TC01: Open DSO Panel ─────────────────────────
+ 
   context('Scenario: Update DSO value for a single date', () => {
 
     it('should open DSO panel for a listing', () => {
@@ -35,19 +35,18 @@ describe('Feature: Multicalendar DSO - Functional Tests', () => {
         MultiCalendarPage.openThreeDotsMenu(listingId)
         MultiCalendarPage.clickAddOverrides()
 
-        // Select dates FIRST
+   
         MultiCalendarPage.selectStartDate(10)
         MultiCalendarPage.selectEndDate(10)
 
-        // Wait for panel to settle
+     
         cy.wait(1500)
 
-        // Click Fixed radio FIRST to reveal price input
+    
         cy.get('[qa-id="dso-radio-option-fixed"]')
           .scrollIntoView()
           .click({ force: true })
 
-        // Then enter price
         cy.get('input[qa-id="dso-price"]', { timeout: 10000 })
           .scrollIntoView()
           .should('be.visible')
@@ -56,7 +55,6 @@ describe('Feature: Multicalendar DSO - Functional Tests', () => {
 
         cy.get('button#add-dso-button-v2').click()
 
-        // Handle confirmation modal
         cy.wait(1500)
         cy.get('body').then(($body) => {
           if ($body.find('button:contains("Update")').length > 0) {
@@ -83,7 +81,6 @@ describe('Feature: Multicalendar DSO - Functional Tests', () => {
 
   })
 
-  // ─── TC02: Bulk Update ────────────────────────────
   context('Scenario: Bulk update DSO for a date range', () => {
 
     it('should select listing and open Apply Override', () => {
@@ -103,11 +100,11 @@ describe('Feature: Multicalendar DSO - Functional Tests', () => {
         cy.intercept('POST', '**/add_custom_pricing**')
           .as('bulkDSO')
 
-        // Step 1 — Select listing via checkbox (bulk action)
+       
         cy.get('[qa-id^="bulk-"]').first()
           .click({ force: true })
 
-        // Step 2 — Verify bulk action bar appears
+     
         cy.get('button:contains("Apply Override")')
           .should('be.visible')
 
@@ -116,7 +113,7 @@ describe('Feature: Multicalendar DSO - Functional Tests', () => {
           .should('be.visible')
           .click()
 
-        // Step 4 — Use 3-dot menu to open DSO panel
+       
         cy.get('[qa-id^="listing-ellipses-"]')
           .first()
           .click()
@@ -128,27 +125,26 @@ describe('Feature: Multicalendar DSO - Functional Tests', () => {
         cy.get('p:contains("Date Specific Overrides")')
           .should('be.visible')
 
-        // Step 5 — Wait for panel to settle
+       
         cy.wait(1500)
 
-        // Step 6 — Click Fixed radio
         cy.get('[qa-id="dso-radio-option-fixed"]')
           .scrollIntoView()
           .click({ force: true })
 
-        // Step 7 — Enter price
+   
         cy.get('input[qa-id="dso-price"]', { timeout: 10000 })
           .scrollIntoView()
           .should('be.visible')
           .clear()
           .type(data.bulkDSO.fixedPrice)
 
-        // Step 8 — Submit
+     
         cy.get('button#add-dso-button-v2')
           .scrollIntoView()
           .click()
 
-        // Step 9 — Handle confirmation modal
+      
         cy.wait(1500)
         cy.get('body').then(($body) => {
           if ($body.find('button:contains("Update")').length > 0) {
@@ -175,7 +171,7 @@ describe('Feature: Multicalendar DSO - Functional Tests', () => {
 
   })
 
-  // ─── TC03: Verify Persistence ─────────────────────
+ 
   context('Scenario: Verify DSO save persistence', () => {
 
     it('should verify saved DSO appears in View Overrides', () => {

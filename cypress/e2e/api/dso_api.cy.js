@@ -17,7 +17,7 @@ describe('Feature: DSO API Testing', () => {
       .should('exist')
   })
 
-  // ─── Helper: Handle confirmation modal if appears ──
+ 
   const handleConfirmModal = () => {
     cy.get('body').then(($body) => {
       if ($body.find('button:contains("Update")').length > 0) {
@@ -31,7 +31,7 @@ describe('Feature: DSO API Testing', () => {
     })
   }
 
-  // ─── TC01: Intercept real DSO API ─────────────────
+
   context('API: Intercept real DSO API call from UI', () => {
 
     it('should intercept add_custom_pricing and return 200',
@@ -156,9 +156,7 @@ describe('Feature: DSO API Testing', () => {
         cy.log('Status: ' + response.status)
         cy.log('Body: ' + JSON.stringify(response.body))
 
-        // PriceLabs uses session cookies — invalid header
-        // token may still work if session cookie is valid
-        // This test verifies the API responds to the request
+       
         expect([200, 302, 401, 403])
           .to.include(response.status)
         cy.log('TC03 passed — status: ' + response.status)
@@ -190,15 +188,13 @@ describe('Feature: DSO API Testing', () => {
         cy.log('Status: ' + response.status)
         cy.log('Body: ' + JSON.stringify(response.body))
 
-        // API should either:
-        // Return 200 with non-SUCCESS message OR
-        // Return 4xx error
+        
         if (response.status === 200) {
           cy.log('API returned 200 — checking body for error')
           // Just log the response — PriceLabs is permissive
           cy.log('Response: ' + JSON.stringify(response.body))
         }
-        // Accept any response — test is about documenting behavior
+     
         expect([200, 400, 422, 500])
           .to.include(response.status)
       })
@@ -206,7 +202,7 @@ describe('Feature: DSO API Testing', () => {
 
   })
 
-  // ─── TC05: Validate Response Structure ────────────
+
   context('API: Validate complete response structure', () => {
 
     it('should validate all response fields on success', () => {
@@ -229,7 +225,6 @@ describe('Feature: DSO API Testing', () => {
 
       cy.get('button#add-dso-button-v2').click()
 
-      // Handle confirmation modal
       cy.wait(1000)
       cy.get('body').then(($body) => {
         if ($body.find('button:contains("Update")').length > 0) {
@@ -244,7 +239,7 @@ describe('Feature: DSO API Testing', () => {
               expect(body).to.have.property('status')
               expect(body.message).to.eq('SUCCESS')
               expect(body.status).to.eq(200)
-              cy.log('✅ ' + JSON.stringify(body))
+              cy.log('' + JSON.stringify(body))
             })
         } else {
           cy.wait('@dsoFull', { timeout: 15000 })
@@ -255,7 +250,7 @@ describe('Feature: DSO API Testing', () => {
               expect(body).to.have.property('status')
               expect(body.message).to.eq('SUCCESS')
               expect(body.status).to.eq(200)
-              cy.log('✅ ' + JSON.stringify(body))
+              cy.log('' + JSON.stringify(body))
             })
         }
       })

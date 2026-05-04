@@ -14,7 +14,7 @@ class MultiCalendarPage {
       .should('exist')
   }
 
-  // ─── Search ──────────────────────────────────────
+ 
   searchListing(name) {
     cy.get(L.searchInput)
       .should('be.visible')
@@ -28,7 +28,7 @@ class MultiCalendarPage {
     cy.get(L.searchInput).clear()
   }
 
-  // ─── Checkbox Selection ───────────────────────────
+ 
   selectListingByName(name) {
     cy.get(L.listingRowByName(name))
       .find(L.listingCheckbox)
@@ -40,7 +40,7 @@ class MultiCalendarPage {
       .click({ force: true })
   }
 
-  // ─── 3-dot Menu ───────────────────────────────────
+  
   openThreeDotsMenu(listingId) {
     cy.get(L.threeDotsMenuByListingId(listingId))
       .should('be.visible')
@@ -61,14 +61,14 @@ class MultiCalendarPage {
       .click()
   }
 
-  // ─── DSO Date Picker ──────────────────────────────
+ 
  
 
  selectStartDate(day) {
   cy.get(L.startDateContainer)
     .first()
     .should('be.visible')
-    .click({ force: true })   // ← add force: true
+    .click({ force: true })   
 
   const padded = String(day).padStart(3, '0')
   cy.get(`.react-datepicker__day--${padded}`)
@@ -81,7 +81,7 @@ selectEndDate(day) {
   cy.get(L.endDateContainer)
     .first()
     .should('be.visible')
-    .click({ force: true })   // ← add force: true
+    .click({ force: true })   
 
   const padded = String(day).padStart(3, '0')
   cy.get(`.react-datepicker__day--${padded}`)
@@ -94,7 +94,7 @@ selectDateRange(startDay, endDay) {
   this.selectStartDate(startDay)
   this.selectEndDate(endDay)
 }
-  // ─── DSO Price Settings ───────────────────────────
+ 
  selectFixedPrice() {
   // Click the Fixed radio using qa-id 
   cy.get('[qa-id="dso-radio-option-fixed"]')
@@ -144,7 +144,7 @@ selectPercentPrice() {
       .type(price)
   }
 
-  // ─── DSO Submit ───────────────────────────────────
+ 
   submitDSO() {
     cy.intercept('POST', '**/overrides**').as('saveDSO')
     cy.get(L.dsoAddButton)
@@ -160,7 +160,7 @@ selectPercentPrice() {
       .click()
   }
 
-  // ─── Full DSO Flow ────────────────────────────────
+  
   addDSOForListing(listingId, startDay, endDay, price) {
     this.openThreeDotsMenu(listingId)
     this.clickAddOverrides()
@@ -171,7 +171,7 @@ selectPercentPrice() {
     this.submitDSO()
   }
 
-  // ─── Bulk Actions ─────────────────────────────────
+ 
   clickApplyOverride() {
     cy.get(L.applyOverrideBtn)
       .should('be.visible')
@@ -194,7 +194,6 @@ selectPercentPrice() {
     cy.wait('@saveRefresh')
   }
 
-  // ─── Toast Verification ───────────────────────────
   verifySuccessToast() {
     cy.get(L.toastMessage, { timeout: 10000 })
       .should('be.visible')
@@ -205,7 +204,7 @@ selectPercentPrice() {
       .should('contain.text', text)
   }
 
-  // ─── Drag and Drop ────────────────────────────────
+  
   dragMetric(sourceSelector, targetSelector) {
     cy.get(sourceSelector)
       .drag(targetSelector, { force: true })

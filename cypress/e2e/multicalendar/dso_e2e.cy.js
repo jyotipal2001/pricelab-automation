@@ -16,21 +16,20 @@ describe('Feature: Multicalendar DSO - End to End Tests', () => {
       .should('exist')
   })
 
-  // ─── E2E TC01 ─────────────────────────────────────
+  
   context('Scenario: Apply DSO and verify price updates', () => {
 
     it('should apply DSO and verify API returns 200', () => {
       cy.fixture('dsoData').then((data) => {
 
-        // ✅ Correct intercept pattern
+
         cy.intercept('POST', '**/add_custom_pricing**')
           .as('saveDSO')
 
-        // Step 1 - Open DSO
+       
         MultiCalendarPage.openThreeDotsMenu(listingId)
         MultiCalendarPage.clickAddOverrides()
 
-        // Step 2 - Select date
         MultiCalendarPage.selectStartDate(15)
         MultiCalendarPage.selectEndDate(15)
 
@@ -38,10 +37,10 @@ describe('Feature: Multicalendar DSO - End to End Tests', () => {
         MultiCalendarPage.selectFixedPrice()
         MultiCalendarPage.enterFinalPrice(data.validDSO.fixedPrice)
 
-        // Step 4 - Submit
+     
         cy.get('button#add-dso-button-v2').click()
 
-        // Step 5 - Handle confirmation modal if appears
+       
         cy.wait(1000)
         cy.get('body').then(($body) => {
           if ($body.find('button:contains("Update")').length > 0) {
@@ -68,7 +67,6 @@ describe('Feature: Multicalendar DSO - End to End Tests', () => {
 
   })
 
-  // ─── E2E TC02 ─────────────────────────────────────
   context('Scenario: Apply percent DSO and verify final price', () => {
 
     it('should apply percent DSO and verify final price', () => {
@@ -81,20 +79,19 @@ describe('Feature: Multicalendar DSO - End to End Tests', () => {
         MultiCalendarPage.openThreeDotsMenu(listingId)
         MultiCalendarPage.clickAddOverrides()
 
-        // Step 2 - Select percent type FIRST
+        
         MultiCalendarPage.selectPercentPrice()
 
-        // Step 3 - Select date
+      
         MultiCalendarPage.selectStartDate(20)
         MultiCalendarPage.selectEndDate(20)
 
-        // Step 4 - Enter percent value
+     
         MultiCalendarPage.enterFinalPrice(data.validDSO.percentValue)
 
-        // Step 5 - Submit
+    
         cy.get('button#add-dso-button-v2').click()
 
-        // Step 6 - Handle confirmation modal
         cy.wait(1000)
         cy.get('body').then(($body) => {
           if ($body.find('button:contains("Update")').length > 0) {

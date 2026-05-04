@@ -67,7 +67,7 @@ const MultiCalendarLocators = {
   datePickerCalendar: 
     '.react-datepicker',
 
-  // Calendar day — FIXED for all day numbers ✅
+  
   calendarDay: (day) => {
   const padded = String(day).padStart(3, '0')
   return `.react-datepicker__day--${padded}` +
@@ -78,7 +78,7 @@ const MultiCalendarLocators = {
   calendarPrevMonth: 
     '.react-datepicker__navigation--previous',
 
-  // ─── Price Inputs — CONFIRMED ✅ ───────────────────
+
  percentRadio: 'input[type="radio"][value="percent"]',
 fixedRadioInput: 'input[type="radio"][value="fixed"]',
   newFinalPriceInput: 
@@ -92,7 +92,6 @@ fixedRadioInput: 'input[type="radio"][value="fixed"]',
   basePriceAddBtn: 
     'button[title="Add"]:eq(3)',
 
-  // Price inputs after clicking Add — CONFIRMED ✅
   minPriceInput: 
     'input[qa-id="dso-min-price"]',
   maxPriceInput: 
@@ -100,7 +99,7 @@ fixedRadioInput: 'input[type="radio"][value="fixed"]',
   basePriceInput: 
     'input[qa-id="dso-base-price"]',
 
-  // ─── Stay Restrictions ─────────────────────────────
+  
   checkInOutToggle: 
     'span[class="chakra-switch__track css-1y0a7zy"]',
   checkInSelectAll: 
@@ -110,13 +109,13 @@ fixedRadioInput: 'input[type="radio"][value="fixed"]',
   enforceWeeklyOption: (option) => 
     `[class*="option"]:contains("${option}")`,
 
-  // ─── DSO Bottom Buttons — CONFIRMED ✅ ────────────
+
   dsoCancelButton: 
     'button#dso-modal-cancel-btn-v2',
   dsoAddButton: 
     'button#add-dso-button-v2',
 
-  // ─── Toast Messages ───────────────────────────────
+  
   toastMessage: 
     '.Toastify__toast, [class*="toast"]',
 

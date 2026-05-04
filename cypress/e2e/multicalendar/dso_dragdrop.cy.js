@@ -22,7 +22,7 @@ describe('Feature: Multicalendar - Drag and Drop', () => {
         .click()
       cy.get('button[qa-id="add-metrics-update-changes-btn"]')
         .should('be.visible')
-    })   // ← closes it()
+    })  
 
     it('should drag first metric below second metric', () => {
       cy.get('button[title="Add Metrics"]')
@@ -43,13 +43,13 @@ describe('Feature: Multicalendar - Drag and Drop', () => {
           cy.get('button[qa-id="add-metrics-update-changes-btn"]')
             .should('not.exist')
 
-          cy.log('✅ Drag and drop completed successfully')
+          cy.log(' Drag and drop completed successfully')
         } else {
           cy.log('Not enough metrics — skipping drag')
         }
       })
-    })   // ← closes it()
+    })   
 
-  })     // ← closes context()
+  })    
 
-})       // ← closes describe()
+})       

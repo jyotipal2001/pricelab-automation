@@ -29,7 +29,7 @@ describe('Feature: Multicalendar DSO - Negative Tests', () => {
       .should('be.visible')
   })
 
-  // ─── TC04: Invalid Characters ─────────────────────
+ 
   context('Scenario: Input invalid characters in price field',
   () => {
 
@@ -51,15 +51,12 @@ describe('Feature: Multicalendar DSO - Negative Tests', () => {
           .clear()
           .type(data.invalidDSO.textValue)
 
-        // ✅ PriceLabs accepts text but field is number type
-        // Verify the actual behavior — field may strip non-numeric
+       
         cy.get('input[qa-id="dso-price"]')
           .invoke('val')
           .then((val) => {
             cy.log('Value after typing text: ' + val)
-            // Field accepts input — test documents behavior
-            // Either value is empty (field blocked it) OR
-            // value contains what was typed
+           
             expect(val).to.be.a('string')
             cy.log('TC04 behavior documented: field value = ' + val)
           })
@@ -73,7 +70,7 @@ describe('Feature: Multicalendar DSO - Negative Tests', () => {
         MultiCalendarPage.selectEndDate(10)
         cy.wait(1500)
 
-        // Click Fixed first
+      
         cy.get('[qa-id="dso-radio-option-fixed"]')
           .scrollIntoView()
           .click({ force: true })
@@ -114,7 +111,6 @@ describe('Feature: Multicalendar DSO - Negative Tests', () => {
 
   })
 
-  // ─── TC05: Submit Without Price ───────────────────
   context('Scenario: Submit DSO without entering price', () => {
 
     it('should not submit DSO with empty price field', () => {
@@ -127,12 +123,12 @@ describe('Feature: Multicalendar DSO - Negative Tests', () => {
         .scrollIntoView()
         .click({ force: true })
 
-      // Do NOT enter price — click Add directly
+   
       cy.get('button#add-dso-button-v2')
         .scrollIntoView()
         .click()
 
-      // Verify panel stays open OR error shown
+ 
       cy.get('body').then(($body) => {
         const panelOpen =
           $body.find('p:contains("Date Specific Overrides")')
@@ -148,7 +144,6 @@ describe('Feature: Multicalendar DSO - Negative Tests', () => {
 
   })
 
-  // ─── TC06: Negative Value ─────────────────────────
   context('Scenario: Input negative price value', () => {
 
     it('should handle negative price input gracefully', () => {
