@@ -33,7 +33,7 @@ describe('Feature: Multicalendar DSO - End to End Tests', () => {
         MultiCalendarPage.selectStartDate(15)
         MultiCalendarPage.selectEndDate(15)
 
-        // Step 3 - Enter price
+      
         MultiCalendarPage.selectFixedPrice()
         MultiCalendarPage.enterFinalPrice(data.validDSO.fixedPrice)
 

@@ -1,6 +1,6 @@
 const MultiCalendarLocators = {
 
-  // ─── Search & Filter ───────────────────────────────
+  
   searchInput: 
     'input[placeholder="Search listings, IDs, cities, and tags"]',
   filtersButton: 
@@ -8,24 +8,24 @@ const MultiCalendarLocators = {
   quickFiltersButton: 
     'button[qa-id="qf-quick-filters-menu-button"]',
 
-  // ─── Listing Row — CONFIRMED ✅ ────────────────────
+ 
   listingRow: 'tr[data-index]',
   listingRowByName: (name) => 
     `tr[data-index]:contains("${name}")`,
   listingRowByIndex: (index) => 
     `tr[data-index="${index}"]`,
 
-  // ─── Listing Checkbox — CONFIRMED ✅ ──────────────
+ 
   listingCheckbox: '[qa-id^="bulk-"]',
   listingCheckboxByListingId: (listingId) => 
     `[qa-id="bulk-${listingId}"]`,
 
-  // ─── 3-dot Menu — CONFIRMED ✅ ────────────────────
+  
   threeDotsMenu: '[qa-id^="listing-ellipses-"]',
   threeDotsMenuByListingId: (listingId) => 
     `[qa-id="listing-ellipses-${listingId}"]`,
 
-  // ─── 3-dot Menu Items ─────────────────────────────
+ 
   addOverridesOption: 
     'button:contains("Add Overrides")',
   viewOverridesOption: 
@@ -37,7 +37,7 @@ const MultiCalendarLocators = {
   saveRefreshByListingId: (listingId) => 
     `button[qa-id="save-${listingId}"]`,
 
-  // ─── Bottom Bulk Action Bar ────────────────────────
+
   applyOverrideBtn: 
     'button:contains("Apply Override")',
   saveRefreshBtn: 
@@ -47,11 +47,11 @@ const MultiCalendarLocators = {
   clearSelectionBtn: 
     'button:contains("Clear Selection")',
 
-  // ─── DSO Panel — CONFIRMED ✅ ──────────────────────
+  
   dsoPanelTitle: 
     'p:contains("Date Specific Overrides")',
 
-  // Date Picker — CONFIRMED ✅
+ 
   datePickerDefaultRange: 
     '[qa-id="date-picker-default-range"]',
   startDateContainer: 

@@ -14,7 +14,7 @@ describe('Feature: Multicalendar DSO - Negative Tests', () => {
     cy.url().should('include', 'multicalendar')
     cy.get('tr[data-index]', { timeout: 20000 }).should('exist')
 
-    // Use alias pattern to avoid element disappearing
+    
     cy.get(`[qa-id="listing-ellipses-${listingId}"]`)
       .as('threeDotsBtn')
     cy.get('@threeDotsBtn')

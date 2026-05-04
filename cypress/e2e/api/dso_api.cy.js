@@ -58,7 +58,7 @@ describe('Feature: DSO API Testing', () => {
 
       cy.get('button#add-dso-button-v2').click()
 
-      // Handle confirmation modal if it appears
+    
       cy.wait(1000)
       cy.get('body').then(($body) => {
         if ($body.find('button:contains("Update")').length > 0) {
@@ -84,7 +84,7 @@ describe('Feature: DSO API Testing', () => {
 
   })
 
-  // ─── TC02: Direct cy.request() ────────────────────
+
   context('API: Direct request with valid payload', () => {
 
     it('should return 200 with SUCCESS message', () => {
@@ -129,7 +129,7 @@ describe('Feature: DSO API Testing', () => {
 
   })
 
-  // ─── TC03: Invalid Token ───────────────────────────
+
   context('API: Negative - Expired/Invalid auth token', () => {
 
     it('should verify API behavior with invalid token', () => {
@@ -165,7 +165,7 @@ describe('Feature: DSO API Testing', () => {
 
   })
 
-  // ─── TC04: Invalid Payload ─────────────────────────
+  // ─── TC04: Invalid Payload 
   context('API: Negative - Invalid/missing listingId', () => {
 
     it('should return error when listingId is missing', () => {

@@ -1,6 +1,6 @@
 const DashboardLocators = {
 
-  // ─── Navigation ────────────────────────────────────
+  
   dynamicPricingDropdown: 
     'button[qa-id="dp-dropdown-button"]',
   manageListingNav: 
