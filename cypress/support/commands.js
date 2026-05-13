@@ -25,25 +25,28 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 
-// Save session after login — reuse across tests
+
 Cypress.Commands.add('loginToPriceLabs', () => {
   cy.session('priceLabsSession', () => {
     cy.visit('https://pricelabs.co/signin')
-
+ 
     cy.get('input[placeholder="Email Address"]')
       .should('be.visible')
       .type('qa.pricelabs@gmail.com')
-
+ 
     cy.get('input[placeholder="Password"]')
       .should('be.visible')
       .type('qg33N$yxJP')
-
+ 
     cy.get('input[value="Sign in"]').click()
-
+ 
     cy.url({ timeout: 20000 })
       .should('include', 'app.pricelabs.co')
-
-    cy.wait(2000)
+ 
+  
+    cy.get('tr[data-index], nav, [class*="sidebar"]', { timeout: 15000 })
+      .should('exist')
+ 
   }, {
     cacheAcrossSpecs: true
   })
